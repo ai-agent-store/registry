@@ -37,6 +37,11 @@ jobs:
           changed=$(git diff --name-only)
           if [ -n "$changed" ]; then git checkout -- $changed; fi
 
+      # Bot PRs (created via GITHUB_TOKEN) don't trigger the validate workflow, so
+      # validate here — a bad manifest fails the run instead of opening a junk PR.
+      - name: Validate
+        run: bun scripts/validate.ts
+
       - name: Open PR
         uses: peter-evans/create-pull-request@v6
         with:
