@@ -4,13 +4,17 @@ name: Propose new packages
 # adding any that aren't in the registry yet. The PR goes through the same review
 # as a human contribution. Runs daily, or on demand.
 #
-# Needs a repo secret REGISTRY_PAT (a PAT with `contents:write` + `pull-requests:write`
-# on this repo). GITHUB_TOKEN can't open PRs here because the org disables workflow
-# write permissions.
+# Uses the built-in GITHUB_TOKEN (no PAT). This requires the org setting
+# Settings → Actions → General → Workflow permissions → "Read and write" +
+# "Allow GitHub Actions to create and approve pull requests".
 on:
   schedule:
     - cron: '0 4 * * *' # daily at 04:00 UTC
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   propose:
@@ -36,7 +40,7 @@ jobs:
       - name: Open PR
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.REGISTRY_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: crawler/new-packages
           title: 'Add newly discovered packages'
           commit-message: 'Add newly discovered packages (crawler)'
