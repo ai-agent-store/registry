@@ -21,7 +21,7 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 // ── The single knob: bump to 50 for the full-scale pass ───────────────────────
-const PER_CATEGORY_LIMIT = 10
+const PER_CATEGORY_LIMIT = 15
 
 // Well-known publisher slugs that map to the 'official' tier.
 const OFFICIAL_PUBLISHERS = new Set([
