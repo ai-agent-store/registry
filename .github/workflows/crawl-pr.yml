@@ -1,0 +1,49 @@
+name: Propose new packages
+
+# The crawler discovers popular providers / skills / MCP servers and opens a PR
+# adding any that aren't in the registry yet. The PR goes through the same review
+# as a human contribution. Runs daily, or on demand.
+#
+# Needs a repo secret REGISTRY_PAT (a PAT with `contents:write` + `pull-requests:write`
+# on this repo). GITHUB_TOKEN can't open PRs here because the org disables workflow
+# write permissions.
+on:
+  schedule:
+    - cron: '0 4 * * *' # daily at 04:00 UTC
+  workflow_dispatch:
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Crawl manifests
+        run: bun scripts/crawl-catalog.ts --manifests .
+        env:
+          # Lifts the GitHub API rate limit while crawling (skill trees, MCP stars).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Keep only newly discovered packages
+        run: |
+          # Revert edits to existing manifests so the PR proposes only new packages;
+          # updates to existing ones stay a manual PR.
+          changed=$(git diff --name-only)
+          if [ -n "$changed" ]; then git checkout -- $changed; fi
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.REGISTRY_PAT }}
+          branch: crawler/new-packages
+          title: 'Add newly discovered packages'
+          commit-message: 'Add newly discovered packages (crawler)'
+          body: |
+            Automated proposal from the catalog crawler. Each added file is a new
+            package. Review and merge to publish, or close to skip.
+          add-paths: |
+            mcp/*.json
+            skill/*.json
+            provider/*.json
