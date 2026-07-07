@@ -1,0 +1,86 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "openrouter",
+  "name": "OpenRouter",
+  "description": "OpenRouter：一个 API Key 访问 300+ 模型（OpenAI 兼容）。此预设已填好接入地址，你只需填入自己的 OpenRouter API Key。",
+  "category": "provider",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "codex"
+  ],
+  "tags": [
+    "provider"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": [
+      {
+        "type": "config",
+        "patch": {
+          "apiKey": "",
+          "baseUrl": "https://openrouter.ai/api/v1",
+          "authType": "bearer",
+          "endpointPath": "/chat/completions",
+          "upstreamProtocol": "auto",
+          "level": 1
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "configSchema": {
+      "type": "object",
+      "required": [
+        "apiKey"
+      ],
+      "properties": {
+        "apiKey": {
+          "type": "string",
+          "description": "OpenRouter API Key (Bearer)"
+        },
+        "baseUrl": {
+          "type": "string",
+          "description": "API 地址",
+          "default": "https://openrouter.ai/api/v1"
+        },
+        "authType": {
+          "type": "string",
+          "default": "bearer"
+        },
+        "level": {
+          "type": "number",
+          "default": 1
+        }
+      }
+    },
+    "supportedModels": [
+      "tencent/hy3:free",
+      "tencent/hy3",
+      "poolside/laguna-xs-2.1:free",
+      "poolside/laguna-xs-2.1",
+      "anthropic/claude-sonnet-5",
+      "google/gemini-3.1-flash-lite-image",
+      "nex-agi/nex-n2-mini",
+      "sakana/fugu-ultra",
+      "google/gemini-3.1-flash-image",
+      "google/gemini-3-pro-image",
+      "cohere/north-mini-code:free",
+      "z-ai/glm-5.2",
+      "openrouter/fusion",
+      "moonshotai/kimi-k2.7-code",
+      "~anthropic/claude-fable-latest",
+      "anthropic/claude-fable-5",
+      "nex-agi/nex-n2-pro",
+      "nvidia/nemotron-3.5-content-safety:free",
+      "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "nvidia/nemotron-3-ultra-550b-a55b"
+    ]
+  },
+  "publisher": {
+    "slug": "openrouter",
+    "name": "OpenRouter",
+    "tier": "official",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=openrouter",
+    "bio": "统一访问 300+ 模型的推理路由服务。"
+  }
+}

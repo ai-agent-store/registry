@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "adeu-mcp-server",
+  "name": "adeu",
+  "description": "Automated DOCX Redlining Engine",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 119,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @adeu/mcp-server",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "dealfluence",
+    "name": "dealfluence",
+    "tier": "community",
+    "avatarUrl": "https://github.com/dealfluence.png",
+    "bio": null
+  }
+}

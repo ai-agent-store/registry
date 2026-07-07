@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "skills-brand-guidelines",
+  "name": "brand-guidelines",
+  "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 159023,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/brand-guidelines/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/anthropics/skills/main/skills/brand-guidelines/SKILL.md",
+    "source": {
+      "repo": "anthropics/skills",
+      "ref": "main",
+      "path": "skills/brand-guidelines/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "anthropics",
+    "name": "anthropics",
+    "tier": "official",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/76263028?v=4",
+    "bio": null
+  }
+}

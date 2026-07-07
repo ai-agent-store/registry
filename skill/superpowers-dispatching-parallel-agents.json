@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "superpowers-dispatching-parallel-agents",
+  "name": "dispatching-parallel-agents",
+  "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 248229,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/obra/superpowers/main/skills/dispatching-parallel-agents/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/obra/superpowers/main/skills/dispatching-parallel-agents/SKILL.md",
+    "source": {
+      "repo": "obra/superpowers",
+      "ref": "main",
+      "path": "skills/dispatching-parallel-agents/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "obra",
+    "name": "obra",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/45416?v=4",
+    "bio": null
+  }
+}

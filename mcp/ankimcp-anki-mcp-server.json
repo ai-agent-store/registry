@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "ankimcp-anki-mcp-server",
+  "name": "Anki MCP Server",
+  "description": "MCP server for Anki flashcards: adaptive review, notes, media, and deck management via AnkiConnect.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 370,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @ankimcp/anki-mcp-server",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "ankimcp",
+    "name": "ankimcp",
+    "tier": "community",
+    "avatarUrl": "https://github.com/ankimcp.png",
+    "bio": null
+  }
+}

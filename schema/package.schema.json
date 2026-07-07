@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Store package manifest",
+  "description": "One file per package under mcp/, skill/, or provider/. The filename must be <slug>.json.",
+  "type": "object",
+  "required": ["slug", "name", "description", "category", "version", "publisher", "compatibleWith", "installHook"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 60 },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "category": { "enum": ["provider", "skill", "mcp"] },
+    "version": { "type": "string", "minLength": 1 },
+    "publisher": {
+      "type": "object",
+      "required": ["slug", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "tier": { "enum": ["official", "verified", "community"] },
+        "avatarUrl": { "type": "string" },
+        "bio": { "type": ["string", "null"] }
+      }
+    },
+    "compatibleWith": {
+      "type": "array",
+      "items": { "enum": ["claude", "codex"] },
+      "minItems": 1
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "downloads": { "type": "number" },
+    "installHook": {
+      "type": "object",
+      "required": ["steps"],
+      "additionalProperties": false,
+      "properties": {
+        "steps": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "command"],
+                "properties": { "type": { "const": "script" }, "command": { "type": "string" } }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "patch"],
+                "properties": { "type": { "const": "config" }, "patch": { "type": "object" } }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "url", "dest"],
+                "properties": { "type": { "const": "file" }, "url": { "type": "string", "format": "uri" }, "dest": { "type": "string" } }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "metadata": { "type": "object" }
+  }
+}

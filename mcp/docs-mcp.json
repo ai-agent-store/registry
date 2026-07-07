@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "docs-mcp",
+  "name": "docs-mcp",
+  "description": "Remote MCP server for Tandem docs, install guides, SDKs, workflows, and agent setup help.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 109,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://tandem.ac/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "frumu-ai",
+    "name": "frumu-ai",
+    "tier": "community",
+    "avatarUrl": "https://github.com/frumu-ai.png",
+    "bio": null
+  }
+}

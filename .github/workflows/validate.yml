@@ -1,0 +1,16 @@
+name: Validate manifests
+
+# Every PR and push is checked: each package manifest must match the schema and
+# its file-step URLs must resolve. This is the automated gate before human review.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun scripts/validate.ts

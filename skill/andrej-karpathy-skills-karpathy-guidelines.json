@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "andrej-karpathy-skills-karpathy-guidelines",
+  "name": "karpathy-guidelines",
+  "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 188817,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/skills/karpathy-guidelines/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/skills/karpathy-guidelines/SKILL.md",
+    "source": {
+      "repo": "multica-ai/andrej-karpathy-skills",
+      "ref": "main",
+      "path": "skills/karpathy-guidelines/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "multica-ai",
+    "name": "multica-ai",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/254743058?v=4",
+    "bio": null
+  }
+}

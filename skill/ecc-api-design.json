@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "ecc-api-design",
+  "name": "api-design",
+  "description": "REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 226819,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/affaan-m/ECC/main/.agents/skills/api-design/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/affaan-m/ECC/main/.agents/skills/api-design/SKILL.md",
+    "source": {
+      "repo": "affaan-m/ECC",
+      "ref": "main",
+      "path": ".agents/skills/api-design/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "affaan-m",
+    "name": "affaan-m",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/124439313?v=4",
+    "bio": null
+  }
+}

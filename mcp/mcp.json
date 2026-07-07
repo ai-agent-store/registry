@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "mcp",
+  "name": "inference.sh",
+  "description": "Run 150+ AI apps — image, video, audio, LLMs, 3D and more. Browse, execute, stream results.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://sh.inference.ac",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "community",
+    "name": "Community",
+    "tier": "community",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=community",
+    "bio": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "skills-canvas-design",
+  "name": "canvas-design",
+  "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 159023,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/canvas-design/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/anthropics/skills/main/skills/canvas-design/SKILL.md",
+    "source": {
+      "repo": "anthropics/skills",
+      "ref": "main",
+      "path": "skills/canvas-design/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "anthropics",
+    "name": "anthropics",
+    "tier": "official",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/76263028?v=4",
+    "bio": null
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "biddeed-mcp",
+  "name": "BidDeed MCP",
+  "description": "AI-powered foreclosure auction intelligence for Florida counties via MCP tools.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 1,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.biddeed.ai/api/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "breverdbidder",
+    "name": "breverdbidder",
+    "tier": "community",
+    "avatarUrl": "https://github.com/breverdbidder.png",
+    "bio": null
+  }
+}

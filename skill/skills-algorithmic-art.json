@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "skills-algorithmic-art",
+  "name": "algorithmic-art",
+  "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avo",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 159023,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/algorithmic-art/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/anthropics/skills/main/skills/algorithmic-art/SKILL.md",
+    "source": {
+      "repo": "anthropics/skills",
+      "ref": "main",
+      "path": "skills/algorithmic-art/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "anthropics",
+    "name": "anthropics",
+    "tier": "official",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/76263028?v=4",
+    "bio": null
+  }
+}
