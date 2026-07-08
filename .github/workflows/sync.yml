@@ -1,6 +1,8 @@
 name: Sync to store
 
-# After a PR merges to main, publish the current manifests to the store DB.
+# After a PR merges to main: publish the current manifests to the store DB, then
+# run an LLM quality + safety review over the changed packages (writes the verdict
+# into each item and quarantines high-risk ones).
 on:
   push:
     branches: [main]
@@ -11,8 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # review.ts diffs HEAD~1..HEAD
+
       - uses: oven-sh/setup-bun@v2
-      - run: bun scripts/sync.ts
+
+      - name: Sync manifests
+        run: bun scripts/sync.ts
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Review changed packages
+        run: bun scripts/review.ts
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          # Without this secret the review step is skipped (sync still runs).
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
