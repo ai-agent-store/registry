@@ -23,9 +23,22 @@ async function callModel(prompt: string): Promise<string> {
   if (OPENAI_KEY) {
     const base = (process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1').replace(/\/$/, '')
     const model = process.env.REVIEW_MODEL ?? 'gpt-4o-mini'
+    const headers = { Authorization: `Bearer ${OPENAI_KEY}`, 'content-type': 'application/json' }
+    // REVIEW_API=responses uses the OpenAI Responses API (e.g. Codex relays like YLS
+    // that only expose /responses); default is Chat Completions.
+    if ((process.env.REVIEW_API ?? 'chat') === 'responses') {
+      const res = await fetch(`${base}/responses`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ model, input: prompt }),
+      })
+      const data = (await res.json()) as { output?: { type?: string; content?: { type?: string; text?: string }[] }[] }
+      const msg = data.output?.find((o) => o.type === 'message')
+      return msg?.content?.find((c) => c.type === 'output_text')?.text ?? ''
+    }
     const res = await fetch(`${base}/chat/completions`, {
       method: 'POST',
-      headers: { Authorization: `Bearer ${OPENAI_KEY}`, 'content-type': 'application/json' },
+      headers,
       body: JSON.stringify({ model, max_tokens: 700, messages: [{ role: 'user', content: prompt }] }),
     })
     const data = (await res.json()) as { choices?: { message?: { content?: string } }[] }
