@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "playwright-mcp",
+  "name": "Playwright",
+  "description": "浏览器自动化：让 agent 打开网页、点击、填表、抓取（微软出品）。",
+  "category": "mcp",
+  "version": "1.0.0",
+  "publisher": {
+    "slug": "microsoft",
+    "name": "Microsoft",
+    "tier": "verified",
+    "avatarUrl": "https://github.com/microsoft.png",
+    "bio": null
+  },
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @playwright/mcp",
+    "configSchema": {}
+  }
+}

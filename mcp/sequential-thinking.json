@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "sequential-thinking",
+  "name": "Sequential Thinking",
+  "description": "结构化分步推理，把复杂问题拆成可修正的思考步骤。",
+  "category": "mcp",
+  "version": "1.0.0",
+  "publisher": {
+    "slug": "modelcontextprotocol",
+    "name": "modelcontextprotocol",
+    "tier": "official",
+    "avatarUrl": "https://github.com/modelcontextprotocol.png",
+    "bio": null
+  },
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @modelcontextprotocol/server-sequential-thinking",
+    "configSchema": {}
+  }
+}

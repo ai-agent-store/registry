@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "context7",
+  "name": "Context7",
+  "description": "为任意库拉取最新文档与代码示例，减少过时 API 幻觉。",
+  "category": "mcp",
+  "version": "1.0.0",
+  "publisher": {
+    "slug": "upstash",
+    "name": "Upstash",
+    "tier": "verified",
+    "avatarUrl": "https://github.com/upstash.png",
+    "bio": null
+  },
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @upstash/context7-mcp",
+    "configSchema": {}
+  }
+}

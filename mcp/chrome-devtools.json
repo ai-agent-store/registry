@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "chrome-devtools",
+  "name": "Chrome DevTools",
+  "description": "通过 Chrome DevTools 协议调试页面、看网络请求与性能（Chrome 团队出品）。",
+  "category": "mcp",
+  "version": "1.0.0",
+  "publisher": {
+    "slug": "chromedevtools",
+    "name": "ChromeDevTools",
+    "tier": "verified",
+    "avatarUrl": "https://github.com/chromedevtools.png",
+    "bio": null
+  },
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y chrome-devtools-mcp",
+    "configSchema": {}
+  }
+}

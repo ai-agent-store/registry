@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "memory",
+  "name": "Knowledge Graph Memory",
+  "description": "基于知识图谱的长期记忆，让 agent 跨会话记住实体与关系。",
+  "category": "mcp",
+  "version": "1.0.0",
+  "publisher": {
+    "slug": "modelcontextprotocol",
+    "name": "modelcontextprotocol",
+    "tier": "official",
+    "avatarUrl": "https://github.com/modelcontextprotocol.png",
+    "bio": null
+  },
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @modelcontextprotocol/server-memory",
+    "configSchema": {}
+  }
+}
