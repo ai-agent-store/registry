@@ -63,4 +63,18 @@ await fetch(`${rest}/items?on_conflict=slug`, {
   body: JSON.stringify(rows),
 }).then((r) => check(r, 'items upsert'))
 
+// 4. Reconcile: unpublish registry items whose manifest was removed — the registry
+// is the source of truth, so deleting a manifest takes the package out of the store.
+const currentSlugs = new Set(rows.map((r) => r.slug))
+const published = (await (await fetch(`${rest}/items?select=slug,metadata&status=eq.published`, { headers: auth })).json()) as { slug: string; metadata: Record<string, unknown> | null }[]
+const stale = published.filter((p) => p.metadata?.['source'] === 'registry' && !currentSlugs.has(p.slug)).map((p) => p.slug)
+if (stale.length) {
+  await fetch(`${rest}/items?slug=in.(${stale.join(',')})`, {
+    method: 'PATCH',
+    headers: { ...auth, Prefer: 'return=minimal' },
+    body: JSON.stringify({ status: 'rejected' }),
+  }).then((r) => check(r, 'reconcile'))
+  console.log(`Unpublished ${stale.length} removed package(s): ${stale.join(', ')}`)
+}
+
 console.log(`Synced ${pubMap.size} publishers, ${rows.length} items (published)`)
