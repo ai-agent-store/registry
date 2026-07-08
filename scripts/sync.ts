@@ -49,19 +49,30 @@ const pubRows = (await (await fetch(`${rest}/publishers?select=id,slug`, { heade
 const pubId = new Map(pubRows.map((p) => [p.slug, p.id]))
 
 // 3. Upsert items as published (the registry is the reviewed source of truth).
-const rows = items
-  .filter((i) => pubId.has(i.publisher?.slug))
-  .map((i) => ({
-    slug: i.slug, name: i.name, description: i.description, category: i.category, version: i.version,
-    publisher_id: pubId.get(i.publisher.slug), compatible_with: i.compatibleWith, tags: i.tags ?? [],
-    downloads: i.downloads ?? 0, status: 'published', install_hook: i.installHook,
-    metadata: { ...(i.metadata ?? {}), source: 'registry' },
-  }))
-await fetch(`${rest}/items?on_conflict=slug`, {
-  method: 'POST',
-  headers: { ...auth, Prefer: 'resolution=merge-duplicates,return=minimal' },
-  body: JSON.stringify(rows),
-}).then((r) => check(r, 'items upsert'))
+// Existing slugs, so we set the downloads baseline only on NEW inserts and preserve
+// accumulated real-install counts on updates (downloads is store-owned once created).
+const existingRows = (await (await fetch(`${rest}/items?select=slug`, { headers: auth })).json()) as { slug: string }[]
+const existingSlugs = new Set(existingRows.map((r) => r.slug))
+
+const eligible = items.filter((i) => pubId.has(i.publisher?.slug))
+const baseRow = (i: Manifest) => ({
+  slug: i.slug, name: i.name, description: i.description, category: i.category, version: i.version,
+  publisher_id: pubId.get(i.publisher.slug), compatible_with: i.compatibleWith, tags: i.tags ?? [],
+  status: 'published', install_hook: i.installHook, metadata: { ...(i.metadata ?? {}), source: 'registry' },
+})
+const batches: [string, Record<string, unknown>[]][] = [
+  ['new', eligible.filter((i) => !existingSlugs.has(i.slug)).map((i) => ({ ...baseRow(i), downloads: i.downloads ?? 0 }))],
+  ['update', eligible.filter((i) => existingSlugs.has(i.slug)).map(baseRow)],
+]
+for (const [label, batch] of batches) {
+  if (!batch.length) continue
+  await fetch(`${rest}/items?on_conflict=slug`, {
+    method: 'POST',
+    headers: { ...auth, Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify(batch),
+  }).then((r) => check(r, `items upsert (${label})`))
+}
+const rows = eligible
 
 // 4. Reconcile: the registry is the single source of truth, so unpublish any
 // published item not backed by a current manifest — except the built-in test
