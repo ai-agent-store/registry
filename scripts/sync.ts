@@ -63,11 +63,13 @@ await fetch(`${rest}/items?on_conflict=slug`, {
   body: JSON.stringify(rows),
 }).then((r) => check(r, 'items upsert'))
 
-// 4. Reconcile: unpublish registry items whose manifest was removed — the registry
-// is the source of truth, so deleting a manifest takes the package out of the store.
+// 4. Reconcile: the registry is the single source of truth, so unpublish any
+// published item not backed by a current manifest — except the built-in test
+// providers, which are seeded separately.
+const PRESERVE = new Set(['local', 'yls', 'skyapi'])
 const currentSlugs = new Set(rows.map((r) => r.slug))
-const published = (await (await fetch(`${rest}/items?select=slug,metadata&status=eq.published`, { headers: auth })).json()) as { slug: string; metadata: Record<string, unknown> | null }[]
-const stale = published.filter((p) => p.metadata?.['source'] === 'registry' && !currentSlugs.has(p.slug)).map((p) => p.slug)
+const published = (await (await fetch(`${rest}/items?select=slug&status=eq.published`, { headers: auth })).json()) as { slug: string }[]
+const stale = published.filter((p) => !currentSlugs.has(p.slug) && !PRESERVE.has(p.slug)).map((p) => p.slug)
 if (stale.length) {
   await fetch(`${rest}/items?slug=in.(${stale.join(',')})`, {
     method: 'PATCH',
