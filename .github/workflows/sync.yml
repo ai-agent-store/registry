@@ -29,5 +29,9 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          # Without this secret the review step is skipped (sync still runs).
+          # Review model: set OPENAI_API_KEY (OpenAI or any relay via OPENAI_BASE_URL)
+          # or ANTHROPIC_API_KEY. Without either, the review step is skipped.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
+          REVIEW_MODEL: ${{ vars.REVIEW_MODEL }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

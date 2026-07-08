@@ -5,16 +5,41 @@ import { readFileSync, existsSync, appendFileSync } from 'node:fs'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
 
+const OPENAI_KEY = process.env.OPENAI_API_KEY
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY
 const SUPABASE_URL = process.env.SUPABASE_URL
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-if (!ANTHROPIC_KEY) {
-  console.log('ANTHROPIC_API_KEY not set — skipping package review.')
+if (!OPENAI_KEY && !ANTHROPIC_KEY) {
+  console.log('No review model key (OPENAI_API_KEY / ANTHROPIC_API_KEY) — skipping package review.')
   process.exit(0)
 }
 
 const ROOT = join(import.meta.dir, '..')
+
+// Call the configured review model. Prefers an OpenAI-compatible endpoint
+// (works with OpenAI or any relay via OPENAI_BASE_URL); falls back to Anthropic.
+async function callModel(prompt: string): Promise<string> {
+  if (OPENAI_KEY) {
+    const base = (process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1').replace(/\/$/, '')
+    const model = process.env.REVIEW_MODEL ?? 'gpt-4o-mini'
+    const res = await fetch(`${base}/chat/completions`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${OPENAI_KEY}`, 'content-type': 'application/json' },
+      body: JSON.stringify({ model, max_tokens: 700, messages: [{ role: 'user', content: prompt }] }),
+    })
+    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] }
+    return data.choices?.[0]?.message?.content ?? ''
+  }
+  const model = process.env.REVIEW_MODEL ?? 'claude-haiku-4-5-20251001'
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'x-api-key': ANTHROPIC_KEY!, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+    body: JSON.stringify({ model, max_tokens: 700, messages: [{ role: 'user', content: prompt }] }),
+  })
+  const data = (await res.json()) as { content?: { text?: string }[] }
+  return data.content?.[0]?.text ?? ''
+}
 
 function changedManifests(): string[] {
   const args = process.argv.slice(2).filter((f) => /^(mcp|skill|provider)\/.+\.json$/.test(f))
@@ -63,13 +88,7 @@ Reply with ONLY a JSON object: {"tier":"official|verified|community|reject","qua
 Manifest:
 ${JSON.stringify(m, null, 2)}${context}`
 
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'x-api-key': ANTHROPIC_KEY!, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    body: JSON.stringify({ model: 'claude-haiku-4-5-20251001', max_tokens: 700, messages: [{ role: 'user', content: prompt }] }),
-  })
-  const data = (await res.json()) as { content?: { text?: string }[] }
-  const text = (data.content?.[0]?.text ?? '').replace(/^```json\s*|```$/g, '').trim()
+  const text = (await callModel(prompt)).replace(/^```json\s*|```$/g, '').trim()
   let verdict: Verdict
   try {
     verdict = JSON.parse(text)
