@@ -74,6 +74,18 @@ for (const [label, batch] of batches) {
 }
 const rows = eligible
 
+// 3b. Record version history — one row per (slug, version), first time seen.
+// Ignore-duplicates so re-syncing the same version is a no-op; new versions
+// append, building a real timeline over time.
+const versionRows = eligible.map((i) => ({ item_slug: i.slug, version: i.version }))
+if (versionRows.length) {
+  await fetch(`${rest}/item_versions?on_conflict=item_slug,version`, {
+    method: 'POST',
+    headers: { ...auth, Prefer: 'resolution=ignore-duplicates,return=minimal' },
+    body: JSON.stringify(versionRows),
+  }).then((r) => check(r, 'item_versions'))
+}
+
 // 4. Reconcile: the registry is the single source of truth, so unpublish any
 // published item not backed by a current manifest — except the built-in test
 // providers, which are seeded separately.
