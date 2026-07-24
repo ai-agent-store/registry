@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "google-ads",
+  "name": "google-ads",
+  "description": "Google Ads MCP server — manage campaigns, keywords, and metrics.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.adramp.ai",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "community",
+    "name": "Community",
+    "tier": "community",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=community",
+    "bio": null
+  }
+}

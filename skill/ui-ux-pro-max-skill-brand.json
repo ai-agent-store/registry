@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "ui-ux-pro-max-skill-brand",
+  "name": "brand",
+  "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 109524,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/brand/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/brand/SKILL.md",
+    "source": {
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "ref": "main",
+      "path": ".claude/skills/brand/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "nextlevelbuilder",
+    "name": "nextlevelbuilder",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/246974152?v=4",
+    "bio": null
+  }
+}

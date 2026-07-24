@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "atars-mcp",
+  "name": "aTars MCP",
+  "description": "Crypto market signals, technical indicators, and sentiment analysis for AI agents.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.aarna.ai/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "community",
+    "name": "Community",
+    "tier": "community",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=community",
+    "bio": null
+  }
+}
