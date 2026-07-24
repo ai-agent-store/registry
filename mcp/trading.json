@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "trading",
+  "name": "trading",
+  "description": "AI-powered trading strategy development: backtesting, market data, and portfolio analysis",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.lona.agency/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "mindsightventures",
+    "name": "mindsightventures",
+    "tier": "community",
+    "avatarUrl": "https://github.com/mindsightventures.png",
+    "bio": null
+  }
+}

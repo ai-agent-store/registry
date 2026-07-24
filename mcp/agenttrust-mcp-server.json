@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "agenttrust-mcp-server",
+  "name": "AgentTrust — Identity & Trust for A2A Agents",
+  "description": "Identity, trust, and A2A orchestration for autonomous AI agents. Official A2A partner.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "npm"
+  ],
+  "downloads": 1,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "stdio",
+    "serverCommand": "npx -y @agenttrust/mcp-server",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "agenttrust",
+    "name": "agenttrust",
+    "tier": "community",
+    "avatarUrl": "https://github.com/agenttrust.png",
+    "bio": null
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "abmeter",
+  "name": "ABMeter",
+  "description": "Feature flagging and A/B testing platform with AI-first experimentation workflows.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.abmeter.ai",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "abmeter",
+    "name": "abmeter",
+    "tier": "community",
+    "avatarUrl": "https://github.com/abmeter.png",
+    "bio": null
+  }
+}

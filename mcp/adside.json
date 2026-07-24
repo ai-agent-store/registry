@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "adside",
+  "name": "adside",
+  "description": "AI agents that manage paid ads on Meta, LinkedIn, and Google Ads from any MCP client.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://api.adside.ai/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "community",
+    "name": "Community",
+    "tier": "community",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=community",
+    "bio": null
+  }
+}

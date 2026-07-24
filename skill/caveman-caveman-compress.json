@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "caveman-caveman-compress",
+  "name": "caveman-compress",
+  "description": ">",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 92517,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/JuliusBrussee/caveman/main/plugins/caveman/skills/caveman-compress/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/JuliusBrussee/caveman/main/plugins/caveman/skills/caveman-compress/SKILL.md",
+    "source": {
+      "repo": "JuliusBrussee/caveman",
+      "ref": "main",
+      "path": "plugins/caveman/skills/caveman-compress/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "juliusbrussee",
+    "name": "JuliusBrussee",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/104168679?v=4",
+    "bio": null
+  }
+}

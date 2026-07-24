@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "meta-ads-mcp",
+  "name": "AdWeave — Meta Ads MCP Server",
+  "description": "Meta Ads MCP server with 47 tools for campaigns, creatives, audiences, and insights.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://mcp.adweave.ai/meta-ads-mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "community",
+    "name": "Community",
+    "tier": "community",
+    "avatarUrl": "https://api.dicebear.com/9.x/shapes/svg?seed=community",
+    "bio": null
+  }
+}

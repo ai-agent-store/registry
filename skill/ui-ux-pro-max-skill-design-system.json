@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "ui-ux-pro-max-skill-design-system",
+  "name": "design-system",
+  "description": "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 109524,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/design-system/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/design-system/SKILL.md",
+    "source": {
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "ref": "main",
+      "path": ".claude/skills/design-system/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "nextlevelbuilder",
+    "name": "nextlevelbuilder",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/246974152?v=4",
+    "bio": null
+  }
+}

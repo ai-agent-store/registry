@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "mcp-2",
+  "name": "1325.AI",
+  "description": "Verified directory of 44,000+ Black-owned U.S. businesses. Search, maps, loyalty rewards.",
+  "category": "mcp",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude",
+    "codex"
+  ],
+  "tags": [
+    "mcp",
+    "streamable-http"
+  ],
+  "downloads": 0,
+  "installHook": {
+    "steps": []
+  },
+  "metadata": {
+    "transport": "http",
+    "url": "https://agoclnqfyinwjxdmjnns.supabase.co/functions/v1/mcp",
+    "configSchema": {}
+  },
+  "publisher": {
+    "slug": "1325ai",
+    "name": "1325ai",
+    "tier": "community",
+    "avatarUrl": "https://github.com/1325ai.png",
+    "bio": null
+  }
+}

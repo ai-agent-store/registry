@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/package.schema.json",
+  "slug": "ui-ux-pro-max-skill-banner-design",
+  "name": "banner-design",
+  "description": "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with AI-generated visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist,",
+  "category": "skill",
+  "version": "1.0.0",
+  "compatibleWith": [
+    "claude"
+  ],
+  "tags": [
+    "skill"
+  ],
+  "downloads": 109524,
+  "installHook": {
+    "steps": [
+      {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/banner-design/SKILL.md",
+        "dest": "skill.md"
+      }
+    ]
+  },
+  "metadata": {
+    "contentUrl": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/main/.claude/skills/banner-design/SKILL.md",
+    "source": {
+      "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "ref": "main",
+      "path": ".claude/skills/banner-design/SKILL.md"
+    }
+  },
+  "publisher": {
+    "slug": "nextlevelbuilder",
+    "name": "nextlevelbuilder",
+    "tier": "community",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/246974152?v=4",
+    "bio": null
+  }
+}
